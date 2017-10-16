@@ -34,14 +34,26 @@ open class BSImagePickerViewController : UINavigationController {
     open var settings: BSImagePickerSettings = Settings()
     
     /**
-     Done button.
+     Done button and title
      */
     @objc open var doneButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
     
+    @objc open var doneButtonTitle: String = NSLocalizedString("Done", comment: "Done") {
+        didSet {
+            doneButton = UIBarButtonItem(title: doneButtonTitle, style: .plain, target: nil, action: nil)
+            photosViewController.doneBarButtonTitle = doneButtonTitle
+        }
+    }
     /**
-     Cancel button
+     Cancel button and title
      */
     @objc open var cancelButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+    
+    @objc open var cancelButtonTitle: String = NSLocalizedString("Cancel", comment: "Cancel") {
+        didSet {
+            cancelButton = UIBarButtonItem(title: cancelButtonTitle, style: .plain, target: nil, action: nil)
+        }
+    }
     
     /**
      Default selections
